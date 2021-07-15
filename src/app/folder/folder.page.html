@@ -3,19 +3,74 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+      <ion-title *ngIf="folder==='Bienvenido'" size="large">Bienvenido</ion-title>
+      <ion-title *ngIf="folder==='Tara1'" size="large">Tara 1 (No Disponible)</ion-title>
+      <ion-title *ngIf="folder==='Tara2'" size="large">Tara 2</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title *ngIf="folder==='Bienvenido'" size="large">Bienvenido</ion-title>
+      <ion-title *ngIf="folder==='Tara1'" size="large">Tara 1 (No Disponible)</ion-title>
+      <ion-title *ngIf="folder==='Tara2'" size="large">Tara 2</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <div *ngIf="folder==='Bienvenido'" id="container">
+    <div>
+      <strong style="font-size: 40px; color: rgb(0, 160, 0)" class="capitalize">Hola!</strong>
+      <hr>
+      <p style="color: rgb(0, 160, 0);">Seleccione una <strong>Tara</strong> para obtener el <strong>Peso</strong>.</p>
+      <hr>
+    </div>
+    <div>
+      <img src="https://images.emojiterra.com/google/android-pie/512px/1f60e.png" alt="" height="40">
+    </div>
   </div>
+
+
+  <div *ngIf="folder!=='Bienvenido'" id="container">
+    <div *ngIf="folder==='Tara1'">
+      <div>
+        <div>
+          <ion-label><strong>Ups!</strong></ion-label>
+        </div>
+        <hr>
+        <img src="https://images.emojiterra.com/google/android-10/512px/1f633.png" alt="" height="40">
+      </div>
+    </div>
+    <div *ngIf="folder!=='Tara1'">
+      <div>
+        <strong style="font-size: 7rem;">
+          <ion-label color="tertiary">{{peso}}</ion-label>
+        </strong>
+      </div>
+      <hr>
+      <div style="font-size: 3rem;">
+        <ion-label color="primary">Kilogramos</ion-label>
+      </div>
+    </div>
+
+
+  </div>
+
 </ion-content>
+
+<ion-footer *ngIf="folder!=='Bienvenido'">
+  <ion-toolbar>
+    <ion-button #btnpeso (click)="onClick()" expand="block" fill="clear" shape="round" (disabled)="btndiss">
+      Obtener Peso
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer  *ngIf="folder==='Bienvenido'">
+  <ion-toolbar>
+    <div style="font-size: .75rem;" class="txt-footer">
+      <ion-label color="primary"><strong><ion-label color="primary">Designed by  </ion-label> Jordan Valdivia, Departamento de Informática</strong></ion-label>
+    </div>
+  </ion-toolbar>
+</ion-footer>
