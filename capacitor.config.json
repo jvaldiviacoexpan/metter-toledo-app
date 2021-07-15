@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "MetterToledoApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

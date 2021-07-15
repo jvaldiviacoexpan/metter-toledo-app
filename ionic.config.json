@@ -1,0 +1,8 @@
+{
+  "name": "MetterToledoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "71b42925"
+}
